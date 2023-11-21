@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "Front"
+  "defaultProject": "Front",
+  "cli": {
+    "analytics": "5d5a7aa5-b94d-46d4-8406-fa0c366c9e3c"
+  }
 }
