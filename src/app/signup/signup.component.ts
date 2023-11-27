@@ -1,17 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AdminService } from '../service/admin.service';
+import { Router } from '@angular/router';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
   email: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService) {}
+  formUser: FormGroup;
 
+  constructor(private authService: AuthService,private formBuilder:FormBuilder,private userService:UserService,private AdminService: AdminService ,private router:Router) {}
+  //code abou 
+  ngOnInit(): void {
+      this.formUser=this.formBuilder.group({
+        username:['',Validators.required],
+        email:['',Validators.email],
+        password:['',Validators.required],
+      })
+  }
+
+  get f(){return this.formUser.controls}
+
+  onSubmit(){
+    if (this.formUser.invalid){
+      return;
+    }else{
+      this.userService.registerUser(this.formUser).subscribe(
+        (res:any) => {
+          console.log(res);
+        }
+      )
+      this.router.navigateByUrl('/login')
+    }
+  }
+  
+
+//
   signUpStudent(): void {
     this.authService.signUpStudent(this.email, this.password).subscribe(
       (response) => {

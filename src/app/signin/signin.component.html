@@ -17,13 +17,13 @@
                 <input type="password" name="password" placeholder="Password">
             </div>
             <div class="form-input pt-30">
-                <input type="submit" name="submit" value="login">
+                <input type="submit" (click)="login()" name="submit" value="login">
             </div>
             
             <!-- Forget Password -->
             <a href="#" class="forget">Forget Password</a>
             <!-- Forget Password -->
-            <a href="register.html" class="registration">Registration</a>
+            <a routerLink="/register" class="registration">Registration</a>
         </div>
     </form>
     <!-- /end login form -->

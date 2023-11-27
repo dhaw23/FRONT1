@@ -1,23 +1,53 @@
-<div>
-    <h2>Student Sign Up</h2>
-    <form (ngSubmit)="signUpStudent()">
-      <label for="email">Email:</label>
-      <input type="email" id="email" [(ngModel)]="email" name="email" required>
-  
-      <label for="password">Password:</label>
-      <input type="password" id="password" [(ngModel)]="password" name="password" required>
-  
-      <button type="submit">Sign Up</button>
-    </form>
-  
-    <h2>Teacher Sign Up</h2>
-    <form (ngSubmit)="signUpTeacher()">
-      <label for="teacherEmail">Email:</label>
-      <input type="email" id="teacherEmail" [(ngModel)]="email" name="email" required>
-  
-      <label for="teacherPassword">Password:</label>
-      <input type="password" id="teacherPassword" [(ngModel)]="password" name="password" required>
-  
-      <button type="submit">Sign Up</button>
-    </form>
-  </div>
+
+<!-- Preloader Start-->
+<main class="login-body" data-vide-bg="assets/img/login-bg.mp4">
+  <!-- Login Admin -->
+  <form class="form-default" [formGroup]="formUser" (ngSubmit)="onSubmit()" action="login-bg.mp4" method="POST">
+      
+      <div class="login-form">
+          <!-- logo-login -->
+          <div class="logo-login">
+              <a routerLink="/"><img src="assets/img/logo/loder.png" alt=""></a>
+          </div>
+          <h2>Registration Here</h2>
+
+          <div class="form-input">
+              <label for="name">Full name</label>
+              <input  type="text" name="name" formControlName="username" 
+              [ngClass]="{'is-invalid':f['username'].errors}"
+              placeholder="Full name">
+              <div *ngIf="f['username'].errors">
+                    <div *ngIf="f['username'].errors['required']">
+                          user name required
+                    </div>
+              </div>
+          </div>
+          <div class="form-input">
+              <label for="Email">Email Address</label>
+              <input type="email" name="email" formControlName="email"
+              [ngClass]="{'is-invalid':f['email'].errors}"
+              placeholder="Email Address">
+              <div *ngIf="f['email'].errors">
+                <div *ngIf="f['email'].errors['required']">
+                      email required
+                </div></div>
+          </div>
+          <div class="form-input">
+              <label for="Password"> Password </label>
+              <input type="password" name="password" formControlName="password" 
+              [ngClass]="{'is-invalid':f['password'].errors}"
+              placeholder="Password">
+              <div *ngIf="f['password'].errors">
+                <div *ngIf="f['password'].errors['required']">
+                    password required
+                </div></div>
+          </div>
+          <div class="form-input pt-30">
+              <input type="submit" (click)="onSubmit()" name="submit" value="Registration">
+          </div>
+          <!-- Forget Password -->
+          <a routerLink="/login" class="registration">login</a>
+      </div>
+  </form>
+  <!-- /end login form -->
+</main>

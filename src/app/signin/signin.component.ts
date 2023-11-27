@@ -12,7 +12,7 @@ export class SigninComponent {
 
   constructor(private authService: AuthService) {}
 
-  signInStudent(): void {
+  login(): void {
     this.authService.signInStudent(this.email, this.password).subscribe(
       (response) => {
         console.log('Student Sign-in successful', response);

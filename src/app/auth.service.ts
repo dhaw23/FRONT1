@@ -6,13 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = ' url el back ';
+  private apiUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {}
 
   signInStudent(email: string, password: string): Observable<any> {
     const body = { email, password };
-    return this.http.post(`${this.apiUrl}/signin/student`, body);
+    return this.http.post(`${this.apiUrl}/auth/login`, body);
   }
 
   signInTeacher(email: string, password: string): Observable<any> {
